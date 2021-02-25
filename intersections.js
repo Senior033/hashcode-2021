@@ -11,7 +11,7 @@ const get = (streets, cars) => {
     
     streets.forEach(street => {
         if(!interSections[street.endIntersec]) interSections[street.endIntersec] = []
-        interSections[street.endIntersec].push({name:street.name, state:false, queue:queue[street.name]||[]})
+        interSections[street.endIntersec].push({name:street.name, queue:queue[street.name]||[]})
     })
 
     return interSections
