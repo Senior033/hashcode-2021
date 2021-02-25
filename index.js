@@ -1,5 +1,5 @@
 const filereader = require("./filereader");
-const {data, cars, streets} = filereader.readData('a');
+const {data, cars, streets} = filereader.readData('b');
 
 const { write } = require("./output");
 const interSections = require("./intersections").get(streets, cars)
@@ -10,7 +10,11 @@ Object.entries(interSections).forEach(([key, value])=>{
     result[key] = streetsForInters.map(street => ({
         name: street,
         occ: ratio.get(street)
-    }))
+    })).filter(street=>street.occ!==0)
 })
-write(result);
 
+ const keysToDelete = Object.keys(result).filter(x => result[x].length === 0);
+
+ keysToDelete.forEach(key => delete result[key])
+
+write(result);
