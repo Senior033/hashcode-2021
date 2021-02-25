@@ -1,7 +1,6 @@
 const filereader = require("./filereader");
 const interSections = require("./intersections")
 
-const {streets, cars, data} = filereader.readData('a')
+const {data, cars, streets} = filereader.readData('a')
 
-interSections.get(streets)
-
+interSections.get(streets,cars)
