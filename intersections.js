@@ -5,9 +5,10 @@ const get = (streets, cars) => {
     const queue = new Map()
 
     cars.forEach((car,index)=>{
-        queue[car.streets[0]] = [index]
+        if(!queue[car.streets[0]]) queue[car.streets[0]] = []
+        queue[car.streets[0]].push(index) 
     })
-
+    
     streets.forEach(street => {
         if(!interSections[street.endIntersec]) interSections[street.endIntersec] = []
         interSections[street.endIntersec].push({name:street.name, state:false, queue:queue[street.name]||[]})
