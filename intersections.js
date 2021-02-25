@@ -9,7 +9,6 @@ const get = (streets, cars) => {
     })
 
     streets.forEach(street => {
-        console.log(queue[street.name])
         if(!interSections[street.endIntersec]) interSections[street.endIntersec] = []
         interSections[street.endIntersec].push({name:street.name, state:false, queue:queue[street.name]||[]})
     })
