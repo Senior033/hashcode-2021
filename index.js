@@ -1,3 +1,5 @@
 const filereader = require("./filereader");
 
-console.log(filereader.readData("a"));
+const {streets, cars} = filereader.readData('a')
+
+console.log(cars)

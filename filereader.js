@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
     readData: (file) => {
         const filename = path.join(__dirname, "input", `${file}.txt`);
-        const [data, ...rest] = fs.readFileSync(filename).toString().split(/\n/);
+        const [data, ...rest] = fs.readFileSync(filename).toString().replace(/\r/g, '').split(/\n/);
 
         const [duration, numOfintersec, numOfStreets, numOfCars, finishPoints] = data.split(" ");
 
@@ -26,14 +26,6 @@ module.exports = {
                 streets: [...x.slice(1, x.length)]
             }
         });
-
-
-
-
-        console.log({ duration, numOfintersec, numOfStreets, numOfCars, finishPoints });
-
-        console.log("streets", streets);
-        console.log("cars", cars);
 
         return {
             data,
